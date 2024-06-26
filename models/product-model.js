@@ -5,7 +5,7 @@ const productSchema = new Schema({
     price:Number, 
     discount:{ 
         type:Number, 
-        default:0
+        default:0 
     },
     bgcolor : String,  
     panecolor: String, 

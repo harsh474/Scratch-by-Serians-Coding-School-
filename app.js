@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 5000;
 const ownersRouter = require("./routes/ownersRouter"); 
 const usersRouter = require("./routes/usersRouter");
 const productsRouter = require("./routes/productsRouter");
-
+const index = require("./routes/index")
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -25,19 +25,12 @@ app.use(cors({ origin: 'http://localhost:4000', credentials: true }));
 // Set the view engine to EJS
 app.set('view engine', 'ejs');
 // Set the views directory
-app.set('views', path.resolve('./view')); 
-
-
-
-app.get('/', (req, res) => {
-    res.send("Hello World");
-}); 
-
+app.set('views', path.resolve('./views')); 
 
 app.use("/owners", ownersRouter);
 app.use("/users", usersRouter);
-app.use("/products", productsRouter);
-
+app.use("/products", productsRouter); 
+app.use("/",index);
 app.listen(PORT, () => {
     console.log(`Server is running on port: ${PORT}`);
 }); 
